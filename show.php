@@ -1,10 +1,12 @@
 <?php
-    $id = $_GET['id'];
-    $sql = "SELECT title, content FROM tasks where id=:id";
-    $pdo = new PDO("mysql:host=localhost:3306; dbname=marvindev;", "root", "root");
-    $statement = $pdo->prepare($sql);
-    $statement->execute($_GET);
-    $res = $statement->fetch(PDO::FETCH_ASSOC);
+
+require_once 'database/QueryBuilder.php';
+
+$db = new QueryBuilder();
+$id = $_GET['id'];
+$res = $db->view($id, "tasks");
+
+
 //    var_dump($res);die;
 ?>
 

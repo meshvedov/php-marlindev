@@ -1,10 +1,10 @@
 <?php
+require_once "database/QueryBuilder.php";
+
 $id = $_GET['id'];
-$sql = "SELECT * FROM tasks where id=:id";
-$pdo = new PDO("mysql:host=localhost:3306; dbname=marvindev;", "root", "root");
-$statement = $pdo->prepare($sql);
-$statement->execute($_GET);
-$res = $statement->fetch(PDO::FETCH_ASSOC);
+$db = new QueryBuilder();
+$res = $db->saveById($id, "tasks");
+
 //    var_dump($res);die;
 ?>
 

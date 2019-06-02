@@ -1,8 +1,8 @@
 <?php
-    $pdo = new PDO("mysql:host=localhost:3306; dbname=marvindev", "root", "root");
-    $statement = $pdo->prepare("SELECT * FROM tasks");
-    $result = $statement->execute();
-    $tasks = $statement->fetchAll(PDO::FETCH_ASSOC);
+    require "database/QueryBuilder.php";
+
+    $db = new QueryBuilder();
+    $tasks = $db->all("tasks");
 ?>
 
 

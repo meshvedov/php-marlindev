@@ -1,7 +1,8 @@
 <?php
-    $pdo = new PDO("mysql:host=localhost:3306; dbname=marvindev;", "root", "root");
-    $sql = "delete from tasks where id=:id";
-    $statement = $pdo->prepare($sql);
-    $statement->execute($_GET);
+
+require_once 'database/QueryBuilder.php';
+
+$db = new QueryBuilder();
+$db->delete($_GET['id'], "tasks");
 
     header("Location: index.php");
